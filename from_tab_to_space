@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ $# -eq 0 ]; then
+    files=`ls`;
+    now_position=`ls`;
+    echo 1;
+else
+    files=`ls $1`;
+    now_position=$1;
+    echo $1'-called';
+    echo $files
+fi
+find . -type f | while read file
+do
+    expand -t 4 $file > /tmp/my_tmp/dummy;
+    cat /tmp/my_tmp/dummy > $file;
+done
